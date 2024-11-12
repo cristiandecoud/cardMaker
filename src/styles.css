@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+:host {
+	/******BUTTONS*******/
+	--main-color-button: #f96743;
+	--main-color-button-hover: #fd4517;
+
+	/*******INPUT********/
+	--background-color-input: #505050;
+	--background-color-input-disabled: #242424;
+}
+
+body {
+	background-color: rgb(20, 20, 20);
+	font-family: system-ui, sans-serif;
+	background: #13151a;
+}
+
+button {
+	margin: 10px;
+	padding: 1%;
+	font-size: large;
+	background-color: var(--main-color-button);
+	color: #fdfdfd;
+	border: none;
+	border-radius: 10px;
+	transition: scale 0.1s, background-color 0.1s;
+}
+
+button:hover {
+	background-color: var(--main-color-button-hover);
+	scale: 1.1 ;
+}
+
+input, select {
+	background-color: var(--background-color-input);
+	color: aliceblue;
+	border-radius: 5px;
+	border: none;
+	height: 30px;
+}
+
+input:disabled, select:disabled {
+	background-color: var(--background-color-input-disabled);
+}
+

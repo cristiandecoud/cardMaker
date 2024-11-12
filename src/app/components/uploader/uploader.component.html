@@ -1,0 +1,26 @@
+<section>
+	@if (fileList.length) {
+		<h1>Selected files: </h1>
+		<h4>Please order the images</h4>
+		@for( file of fileList; let i = $index; track i) {
+			<ol>
+				<p id="list">
+					@if ( i + 1 != fileList.length) {
+						<button class='arrow' (click)='changePosition(i, 1)'>&#8595;</button>
+					}
+					@if (i != 0 ) {
+						<button class='arrow' (click)='changePosition(i, -1)'>&#8593;</button>
+					}
+					{{i + 1}} - {{file.name}} 
+				</p>
+			</ol>
+		}
+		<article >
+			<button class='load' (click)='applyImages()'>Apply</button>
+			<button class='clean' (click)='cleanImages()'>Clean</button>
+		</article>
+	} @else {
+		<input type="file" multiple (change)="onFileChange($event)" />
+	}
+
+</section>

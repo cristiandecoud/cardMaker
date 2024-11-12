@@ -1,0 +1,14 @@
+<div id="wrapper">
+	<div class="card" id="card">
+		@if (layers.length) {
+			@for (layer of layers; let idx = $index; track idx ) {
+				<div class="layer" [style]="separation[idx]">
+					<img [src]='layer.file' [alt]='layer.name' />
+				</div>			
+			}
+			<div class="layer last" [style]='separationLast'>
+				<img [src]='marco' alt='marco'/>
+			</div>
+		}
+	</div>
+</div>
