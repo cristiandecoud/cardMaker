@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+TODO:
+Complete Login
+	- Login with username and password
+	- Store username and password in local storage
+	- Redirect to playground
+	- Show error message if username or password is incorrect
+
+Complete Register
+Create a navbar 
+Side menu with cards
+
+Save card in account
+Create a deck and save it in account
+

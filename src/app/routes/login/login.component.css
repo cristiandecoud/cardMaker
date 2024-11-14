@@ -2,3 +2,24 @@ label {
 	color: white;
 }
 
+form {
+	max-width: 200px;
+	max-height: fit-content;
+	border: 1px solid white;
+	padding: 20px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input {
+	background-color: chocolate
+}
+
+.wrapper {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
