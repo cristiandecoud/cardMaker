@@ -14,7 +14,8 @@ const accountMock: Account = {
     firstname: "John",
     lastname: "Donovan"
   },
-  token: 'tokendeejemplo'
+  token: 'tokendeejemplo',
+  isAuthenticated: true
 }
 
 @Injectable({
@@ -24,17 +25,18 @@ export class AuthService {
   private apiUrl = 'https://api.example.com/auth/login';
   accountStore = inject(AuthStore);
 
-  constructor( private http: HttpClient, private lStorageService: LocalStorageService ) { }
+  constructor(private lStorageService: LocalStorageService ) { }
 
   login(username: string, password: string): Observable<Account> {
     // return this.http.post<Account>(this.apiUrl, { username, password }).pipe(
     return of(accountMock).pipe(
       map( resp => {
+        console.log('entra al login', resp)
         this.lStorageService.setAccount(resp);
         this.accountStore.setAccount(resp);
         return resp;
       }),
-      catchError(this.handleError)
+      // catchError(this.handleError)
     );
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,31 +16,24 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    // private authService: AuthService
+    private authService: AuthService
   ) {
     this.loginForm = this.fb.nonNullable.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-
-      this.router.navigate(['playground']);
-
-      // login al servidor
-      // this.authService.login(username, password).subscribe(
-      //   (response) => {
-      //     console.log('Login exitoso', response);
-      //     // Redirigir al usuario a la página deseada
-      //   },
-      //   (error) => {
-      //     console.error('Error de login', error);
-      //     // Mostrar mensaje de error al usuario
-      //   }
-      // );
-    }
+    if (!this.loginForm.valid)  return;
+    const { username, password } = this.loginForm.value;
+    this.authService.login(username, password).subscribe( {
+      next: (resp) => {
+        this.router.navigate(['playground']);
+      },
+      error: (err) => {
+        console.error(err)
+      }
+    });
   }
 }

@@ -8,4 +8,5 @@ export interface Account {
     lastname: string;
   },
 	token: string;
+  isAuthenticated: boolean;
 }

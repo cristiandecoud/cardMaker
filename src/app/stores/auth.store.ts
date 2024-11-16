@@ -1,10 +1,23 @@
 import { patchState, signalStore, withComputed, withMethods, withState } from "@ngrx/signals";
-import { Account } from "../interfaces/auth.interface";
+// import { Account } from "../interfaces/auth.interface";
 import { computed } from "@angular/core";
+
+type Account = {
+	id: string;
+  username: string;
+  role: 'Admin' | 'User';
+  darkMode: boolean;
+  name: {
+    firstname: string;
+    lastname: string;
+  },
+	token: string;
+  isAuthenticated: boolean;
+}
 
 const initialState: Account = {
 	id: '',
-  username: '',
+  username: 'initial',
   role: 'User',
   darkMode: false,
   name: {
@@ -12,23 +25,26 @@ const initialState: Account = {
     lastname: ''
   },
   token: '',
+	isAuthenticated: false
 }
 
 export const AuthStore = signalStore(
-	{providedIn: 'root'},
+	{ providedIn: 'root' },
 	withState(initialState),
-	withComputed(({username}) => ({
-		isAuthenticated: computed(() => Boolean(username))
-	})),
+	// withComputed(({username}) => ({
+	// })),
 	withMethods( store => ({
 		setAccount( data: Account ) {
-			patchState( store, (state) => ({...data}))
+			console.log(data);
+			console.log(store.username())
+			patchState( store, state => ({...data}));
+			console.log(store.username());
 		},
 		clean() {
-			patchState(store, state => ({...initialState}))
+			patchState(store, state => ({...initialState}));
 		},
 		refreshAccount( data: Partial<Account> ) {
-			patchState(store, state => ({...state, ...data}))
+			patchState(store, state => ({...state, ...data}));
 		}
 	}))
 )

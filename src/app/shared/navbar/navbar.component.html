@@ -1,0 +1,9 @@
+<div class="navbar">
+	<h2>Card Maker</h2>
+	<!-- @if(authStore.isAuthenticated()) { -->
+	<button (click)="logout()">Logout</button>
+	<!-- } @else { -->
+	<button (click)="login()">Login</button>
+	<!-- } -->
+	<h4 class="username">{{authStore.username()}}</h4>
+</div>

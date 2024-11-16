@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-:host {
+:root {
 	/******BUTTONS*******/
 	--main-color-button: #f96743;
 	--main-color-button-hover: #fd4517;
@@ -7,12 +7,29 @@
 	/*******INPUT********/
 	--background-color-input: #505050;
 	--background-color-input-disabled: #242424;
+
+	--main-navbar-color: #985F99
+}
+
+* {
+	box-sizing: border-box;
+	min-width: 0;
+	margin: 0;
+  padding: 0;
 }
 
 body {
-	background-color: rgb(20, 20, 20);
+	min-height: 100dvh;
 	font-family: system-ui, sans-serif;
 	background: #13151a;
+}
+
+h1,h2,h3,h4 {
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
 }
 
 button {
