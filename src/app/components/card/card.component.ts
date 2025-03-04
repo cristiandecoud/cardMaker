@@ -20,7 +20,6 @@ interface Dimensions {
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

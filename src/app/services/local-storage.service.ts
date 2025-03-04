@@ -32,4 +32,20 @@ export class LocalStorageService {
     localStorage.removeItem('account');
   }
 
+  // saveCard(card: Card, userId: string) {
+  //   const cardString = JSON.stringify(card);
+  //   localStorage.setItem(`card-${userId}`, cardString);
+  // }
+
+  // getCard(userId: string): Card | null {
+  //   const card = this.getItem(`card-${userId}`)
+  //   if(card) return JSON.parse(card);
+
+  //   return null; 
+  // }
+
+  // removeCard(userId: string) {
+  //   localStorage.removeItem(`card-${userId}`);
+  // }
+
 }

@@ -28,16 +28,30 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 TODO:
-Complete Login
+## Complete Login
 	- Login with username and password
 	- Store username and password in local storage
 	- Redirect to playground
-	- Show error message if username or password is incorrect
 
 Complete Register
-Create a navbar 
-Side menu with cards
+## Create a navbar 
 
+Create guards
 Save card in account
 Create a deck and save it in account
 
+
+Experiencia de usuario:
+Ingreso a la aplicación
+Quiero ver mis cartas guardadas
+Quiero poder crear nuevas y guardarlas
+Quiero poder editar mis cartas guardadas
+Quiero poder borrar mis cartas guardadas
+
+
+Paleta de colores:
+715BFF
+FBA0FE
+FFEF65
+000000
+2F323A

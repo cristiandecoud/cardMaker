@@ -1,12 +1,18 @@
 <div class="wrapper">
+  <h1>Register</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="username">Username</label>
     <input type="text" formControlName="username" id="username">
+   
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" id="email">
 
     <label for="password">Password</label>
     <input type="password" formControlName="password" id="password">
     
-    <button class="primary" type="submit">Login</button>
-    <button class="primary" (click)="goToRegister()">Register</button>
+    <label for="password">Confirm your password</label>
+    <input type="password" formControlName="confirmedPassword" id="confirmedPassword">
+
+    <button class="primary" type="submit">Save</button>
   </form>
 </div>

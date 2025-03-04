@@ -1,14 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-	/******BUTTONS*******/
-	--main-color-button: #f96743;
-	--main-color-button-hover: #fd4517;
+	/*******MAIN COLORS******/
+  --primary: #715BFF;
+  --secondary: #FBA0FE;
+  --accent: #FFEF65;
+  --background-primary: #000000;
+  --background-secondary: #2F323A;
+
+	/*****BUTTONS******/
+	--primary-button: var(--primary);
+	--secondary-button: var(--secondary);
+	--accent-button: var(--accent);
+	--contrast-button: var(--background-primary);
 
 	/*******INPUT********/
-	--background-color-input: #505050;
+	/* --background-color-input: #505050;
 	--background-color-input-disabled: #242424;
 
-	--main-navbar-color: #985F99
+	--main-navbar-color: #985F99 */
 }
 
 * {
@@ -21,7 +30,7 @@
 body {
 	min-height: 100dvh;
 	font-family: system-ui, sans-serif;
-	background: #13151a;
+	background: var(--background-primary);
 }
 
 h1,h2,h3,h4 {
@@ -33,23 +42,35 @@ p {
 }
 
 button {
+	cursor: pointer;
 	margin: 10px;
-	padding: 1%;
+	padding: 10px;
 	font-size: large;
-	background-color: var(--main-color-button);
 	color: #fdfdfd;
 	border: none;
 	border-radius: 10px;
 	transition: scale 0.1s, background-color 0.1s;
 }
 
+.primary {
+	background-color: var(--primary-button);
+}
+
+.secondary {
+	background-color: var(--secondary-button);
+}
+
+.contrast {
+	background-color: var(--contrast-button);
+}
+
 button:hover {
-	background-color: var(--main-color-button-hover);
-	scale: 1.1 ;
+	filter: brightness(1.1);
+	scale: 1.1;
 }
 
 input, select {
-	background-color: var(--background-color-input);
+	background-color: var(--background-secondary);
 	color: aliceblue;
 	border-radius: 5px;
 	border: none;
@@ -57,6 +78,10 @@ input, select {
 }
 
 input:disabled, select:disabled {
-	background-color: var(--background-color-input-disabled);
+	background-color: var(--background-secondary);
+}
+
+label {
+	color: var(--primary);
 }
 

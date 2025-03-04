@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Account } from '../interfaces/auth.interface';
-import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { map, Observable, throwError } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthStore } from '../stores/auth.store';
@@ -22,16 +22,28 @@ const accountMock: Account = {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://api.example.com/auth/login';
+  private apiUrl = 'http://localhost:3000/api/users';
   accountStore = inject(AuthStore);
 
-  constructor(private lStorageService: LocalStorageService ) { }
+  constructor(private lStorageService: LocalStorageService, private http: HttpClient ) { }
 
   login(username: string, password: string): Observable<Account> {
-    // return this.http.post<Account>(this.apiUrl, { username, password }).pipe(
-    return of(accountMock).pipe(
+    const email = username;
+    return this.http.post<Account>(this.apiUrl + '/login', { email, password }, { withCredentials: true }).pipe(
       map( resp => {
         console.log('entra al login', resp)
+        this.lStorageService.setAccount(resp);
+        this.accountStore.setAccount(resp);
+        return resp;
+      }),
+      // catchError(this.handleError)
+    );
+  }
+
+  register(username: string, password: string, email: string): Observable<Account> {
+    return this.http.post<Account>(this.apiUrl + '/register', { username, password, email }).pipe(
+      map( resp => {
+        console.log('entra al register', resp)
         this.lStorageService.setAccount(resp);
         this.accountStore.setAccount(resp);
         return resp;
@@ -58,7 +70,7 @@ export class AuthService {
       // Error del lado del servidor
       errorMessage = `Código de error: ${error.status}\nMensaje: ${error.message}`;
     }
-    console.error(errorMessage); // Log para depuración
-    return throwError(() => new Error(errorMessage)); // Retorna el error como un observable
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }
